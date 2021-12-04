@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Toc-Toe</title>
+    <!-- font awesome -->
+    <link rel="shortcut icon" href="/media/favicon.png" type="image/x-icon">
+    <!-- font-awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <!-- external css -->
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="winningLine"></div>
+      <div class="box one" data-Value=""><img src="" class="turnVal" /></div>
+      <div class="box two" data-vlaue=""><img src="" class="turnVal" /></div>
+      <div class="box three" data-vlaue=""><img src="" class="turnVal" /></div>
+      <div class="box four" data-vlaue=""><img src="" class="turnVal" /></div>
+      <div class="box five" data-vlaue=""><img src="" class="turnVal" /></div>
+      <div class="box six" data-vlaue=""><img src="" class="turnVal" /></div>
+      <div class="box seven" data-vlaue=""><img src="" class="turnVal" /></div>
+      <div class="box eight" data-vlaue=""><img src="" class="turnVal" /></div>
+      <div class="box nine" data-vlaue=""><img src="" class="turnVal" /></div>
+    </div>
+
+    <div class="showTurn">
+      <div class="X-turn active">X's Turn</div>
+      <div class="O-turn">0's Turn</div>
+    </div>
+
+    <div class="messageBox">
+      <div class="images">
+        <img src="./media/x.gif" data-tag="X" class="gameMessage" />
+        <img src="./media/O.gif" data-tag="0" class="gameMessage" />
+      </div>
+      <div class="message">
+        <p>Winner!</p>
+        <button id="resetGame">Play Again</button>
+      </div>
+    </div>
+    
+    <div class="audioIcon">
+      <i class="fas fa-volume-mute" id="mute"></i>
+      <i class="fas fa-volume-up" id="volume"></i>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

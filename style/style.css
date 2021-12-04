@@ -1,0 +1,445 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: url(/media/cursor.svg), auto;
+  background-color: #6bada9;
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#6bada9), color-stop(#5a9c98), color-stop(#488b87), color-stop(#377b77), to(#246b67));
+  background-image: linear-gradient(to right top, #6bada9, #5a9c98, #488b87, #377b77, #246b67);
+}
+
+body .wrapper {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-radius: 60px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+@media screen and (max-width: 600px) {
+  body .wrapper {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body .wrapper {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  body .wrapper {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  body .wrapper {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+body .wrapper .box {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -ms-flex-preferred-size: 33%;
+      flex-basis: 33%;
+  font-size: 50px;
+  opacity: 0.8;
+  position: relative;
+  border: 4px solid #073230;
+}
+
+body .wrapper .box.one, body .wrapper .box.three, body .wrapper .box.two {
+  border-top: none;
+}
+
+body .wrapper .box.four, body .wrapper .box.seven, body .wrapper .box.one {
+  border-left: none;
+}
+
+body .wrapper .box.seven, body .wrapper .box.eight, body .wrapper .box.nine {
+  border-bottom: none;
+}
+
+body .wrapper .box.three, body .wrapper .box.six, body .wrapper .box.nine {
+  border-right: none;
+}
+
+body .wrapper .box .turnVal {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+body .wrapper #winningLine {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 11px;
+  border-radius: 0px 50% 50% 0%;
+  background-color: #089974;
+  opacity: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 600px) {
+  body .wrapper #winningLine {
+    display: none;
+    opacity: 0;
+  }
+}
+
+body .showTurn {
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+body .showTurn .X-turn,
+body .showTurn .O-turn {
+  background: #000;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 30px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 0px;
+  opacity: 0;
+  z-index: 2;
+  -webkit-transition: .1s;
+  transition: .1s;
+  -webkit-box-shadow: 2px 3px 8px 0px rgba(255, 255, 255, 0.75);
+          box-shadow: 2px 3px 8px 0px rgba(255, 255, 255, 0.75);
+}
+
+@media screen and (max-width: 600px) {
+  body .showTurn .X-turn,
+  body .showTurn .O-turn {
+    padding: 8px 12px;
+    font-size: 27px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body .showTurn .X-turn,
+  body .showTurn .O-turn {
+    font-size: 24px;
+  }
+}
+
+body .showTurn .X-turn {
+  left: 20px;
+}
+
+body .showTurn .O-turn {
+  right: 20px;
+}
+
+body .showTurn .X-turn.active,
+body .showTurn .O-turn.active {
+  -webkit-animation: swing 0.4s ease-out forwards;
+          animation: swing 0.4s ease-out forwards;
+  opacity: 0.8;
+}
+
+body .messageBox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  z-index: 3;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  pointer-events: none;
+}
+
+body .messageBox.active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  pointer-events: all;
+  opacity: 1;
+}
+
+body .messageBox .images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .messageBox .images .gameMessage {
+  width: 220px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 30px;
+  border: 5px solid #afd5d3;
+  -webkit-box-shadow: 2px 3px 8px 0px rgba(255, 255, 255, 0.75);
+          box-shadow: 2px 3px 8px 0px rgba(255, 255, 255, 0.75);
+  margin: 10px 15px;
+  opacity: 0;
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  body .messageBox .images .gameMessage {
+    width: 200px;
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body .messageBox .images .gameMessage {
+    width: 150px;
+    height: 130px;
+  }
+}
+
+body .messageBox .images .gameMessage.active {
+  opacity: 1;
+  display: block;
+}
+
+body .messageBox .message {
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .messageBox .message p {
+  font-size: 90px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  position: relative;
+  color: #afd5d3;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 700px) {
+  body .messageBox .message p {
+    font-size: 75px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body .messageBox .message p {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  body .messageBox .message p {
+    font-size: 50px;
+  }
+}
+
+body .messageBox .message p::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 5px;
+  background-color: #fff;
+  bottom: 7px;
+  left: 0px;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+body .messageBox .message p.active::after {
+  width: 100%;
+}
+
+body .messageBox .message #resetGame {
+  margin-top: 25px;
+  padding: 10px 15px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 4px solid #afd5d3;
+  outline: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #000;
+  color: #fff;
+  cursor: url(/media/cursor.svg), auto;
+}
+
+@media screen and (max-width: 700px) {
+  body .messageBox .message #resetGame {
+    padding: 8px 12px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body .messageBox .message #resetGame {
+    font-size: 16px;
+  }
+}
+
+body .messageBox .message #resetGame:hover {
+  background-color: #afd5d3;
+  color: #000;
+  -webkit-box-shadow: 2px 3px 8px 0px rgba(255, 255, 255, 0.75);
+          box-shadow: 2px 3px 8px 0px rgba(255, 255, 255, 0.75);
+}
+
+body .audioIcon {
+  position: absolute;
+  background: #000;
+  opacity: 0;
+  width: 53px;
+  height: 53px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  -webkit-transition: .1s;
+  transition: .1s;
+  -webkit-box-shadow: 2px 3px 8px 0px rgba(255, 255, 255, 0.75);
+          box-shadow: 2px 3px 8px 0px rgba(255, 255, 255, 0.75);
+}
+
+@media screen and (max-width: 600px) {
+  body .audioIcon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body .audioIcon {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+body .audioIcon:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  border: 2px solid #fff;
+}
+
+body .audioIcon #mute, body .audioIcon #volume {
+  position: absolute;
+  color: #fff;
+  font-size: 26px;
+  pointer-events: none;
+}
+
+body .audioIcon #mute {
+  opacity: 0;
+}
+
+@-webkit-keyframes swing {
+  0% {
+    bottom: 0px;
+  }
+  50% {
+    bottom: 50px;
+  }
+  100% {
+    bottom: 20px;
+  }
+}
+
+@keyframes swing {
+  0% {
+    bottom: 0px;
+  }
+  50% {
+    bottom: 50px;
+  }
+  100% {
+    bottom: 20px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
